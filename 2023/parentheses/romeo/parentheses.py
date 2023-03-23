@@ -53,7 +53,7 @@ for n in range(10):
   assert num_parentheses_ver2(n,n) == num_parentheses(n)
 
 """
-ESERCIZI SUGGERITI:
+PROPOSTE DI ESERCIZI:
 1. provate ad ottenere un algoritmo che lista tutte le FBF poggiando sulla struttura ricorsiva evidenziata in num_parentheses_ver2.
 2. implementare rank e unrank secondo l'ordinamento determinato da list_parentheses
 """
