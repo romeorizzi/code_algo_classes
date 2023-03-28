@@ -1,10 +1,16 @@
 #!/usr/bin/python
+import sys
+sys.setrecursionlimit(10**9)
+
+MAXN = 1000000
+memo_risp = [None] * (MAXN+1)
+memo_risp[0] = memo_risp[1] = 1
 
 def num_piastrellature(n):
   assert n >= 0
-  if n <= 1:
-    return 1
-  return num_piastrellature(n - 1) + num_piastrellature(n - 2)
+  if memo_risp[n] == None:
+      memo_risp[n] = num_piastrellature(n - 2) + num_piastrellature(n - 1)
+  return memo_risp[n]
 
 
 def rank_piastrellatura(n, p):
@@ -26,6 +32,7 @@ def rank_piastrellatura(n, p):
 
 def unrank_piastrellatura(n, rank, history=""):
   "restituisce la piastrellatura di rango rank tra le piastrellature di un bagno di dimensione n, prefissata da history"
+  #print(f"called with {n=}, {rank=}, {history=}")
   assert n >= 0
   assert rank < num_piastrellature(n);
   if n == 0:
@@ -39,32 +46,13 @@ def unrank_piastrellatura(n, rank, history=""):
      return unrank_piastrellatura(n - 2, rank-num_piastrellature(n-1), history + "[----]")
 
 
-def list_piastrellature(n, history=""):
- """
-  stampa le piastrellature di un bagno di dimensione n, ciascuna prefissata dal contenuto di history
- """
- assert n >= 0
- if n == 0:
-  print(history)
- elif n == 1:
-  #print(history+"[-]");
-  list_piastrellature(n - 1, history + "[-]")
- else:
-  list_piastrellature(n - 1, history + "[-]")
-  list_piastrellature(n - 2, history + "[----]")
-
 
 n = int(input("n="))
-print(f"Ecco la lista delle {num_piastrellature(n)} piastrellature possibili:")
-list_piastrellature(n)
+print(f"Le piastrellature sono {num_piastrellature(n)}.")
 
-print(f'{rank_piastrellatura(1, "[-]")=}')
-print(f'{rank_piastrellatura(2, "[----]")=}')
-print(f'{rank_piastrellatura(2, "[-][-]")=}')
-print(f'{rank_piastrellatura(3, "[-][----]")=}')
-print(f'{rank_piastrellatura(3, "[----][-]")=}')
+r = int(input("r="))
+piast = unrank_piastrellatura(n, r, "")
+print(f'La {r}-esima piastrellatura di un bagno 1x{n} è {piast}');
 
-print(f"Riotteniamo ora la lista delle {num_piastrellature(n)} piastrellature possibili utilizzando unrank:")
-for r in range(num_piastrellature(n)):
-  print(unrank_piastrellatura(n, r))
-  
+print(f'{rank_piastrellatura(n, piast)=}');
+
