@@ -8,7 +8,7 @@ from sys import stderr
 T = int(input())
 for _ in range(T):
     num_figli = list(map(int, input().strip().split()))
-    #print(f"\n\n{num_figli=}", file = stderr)
+    print(f"input: {num_figli=}", file = stderr)
 
     pos_R = 0
     def specchio():
@@ -22,10 +22,11 @@ for _ in range(T):
 
     def specchio_leonardo_da_vinci():
         global pos_R
+        risp = ""
         memorize_num_figli = num_figli[pos_R]; pos_R += 1
-        risp = f"{memorize_num_figli} "
         for _ in range(memorize_num_figli):
             risp += specchio_leonardo_da_vinci()
+        risp += f"{memorize_num_figli} "
         return risp
     
     pos_R = 0
