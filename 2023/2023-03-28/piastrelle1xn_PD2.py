@@ -1,1 +1,1 @@
-../../piastrellature1xn_PD/romeo/piastrelle1xn_PD2.py
+../piastrellature1xn_PD/romeo/piastrelle1xn_PD2.py
