@@ -1,0 +1,54 @@
+STEP 1:
+A
+scrivo 0 su A
+
+STEP 2:
+A F
+scrivo 1 su F
+
+STEP 3
+A F E
+scrivo 2 su E
+
+STEP 4:
+A F E C
+scrivo 3 su C
+
+STEP 5:
+A F E C D
+scrivo 4 su D
+
+STEP 6:
+A F E C
+
+STEP 7:
+A F E B
+scrivo 4 su B
+
+STEP 8:
+A F E B (A)
+(scrivo 5 su A)
+=> Ho trovato un ciclo dispari
+
+SOL: A -> B -> E -> F -> A
+
+n    A    B    E    F    A
+f    A    A    A    A    None
+
+STEP 9:
+A F E B
+=> Ho trovato un ciclo dispari
+
+STEP 10:
+A F E
+=> Ho trovato un ciclo dispari
+
+STEP 11:
+A F
+=> Ho trovato un ciclo dispari
+
+STEP 12:
+A
+=> Ho trovato un ciclo dispari
+
+
